@@ -1,13 +1,40 @@
-var data = [];
+const taskInput = document.querySelector("#taskInput");
+const addTaskBtn = document.querySelector("#addTaskBtn");
+const taskList = document.querySelector("#taskList");
 
-function addDiv() {
-  // event.preventDefault();
-  var name = document.getElementById("name").value;
-  var email = document.getElementById("email").value;
-  if (!name || !email) {
-    return alert("Name and email are required");
+let tasks = [];
+
+const renderTasks = () => {
+  taskList.innerHTML = "";
+  tasks.forEach((task, index) => {
+    let li = document.createElement("li");
+    li.innerHTML = task;
+    taskList.appendChild(li);
+  });
+};
+
+const addTask = () => {
+  let task = taskInput.value;
+  if (task) {
+    tasks.push(task);
+    taskInput.value = "";
+    renderTasks();
+    updateLocalStorage();
   }
-  var newDiv = { name: name, email: email };
-  data.push(newDiv);
-}
-console.log(data);
+};
+
+const updateLocalStorage = () => {
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+};
+
+const getTasksFromLocalStorage = () => {
+  let storedTasks = localStorage.getItem("tasks");
+  if (storedTasks) {
+    tasks = JSON.parse(storedTasks);
+    renderTasks();
+  }
+};
+
+addTaskBtn.addEventListener("click", addTask);
+
+document.addEventListener("DOMContentLoaded", getTasksFromLocalStorage);

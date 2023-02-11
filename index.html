@@ -1,22 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./style.css" />
-    <title>Document</title>
+    <title>To-Do List</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
   </head>
   <body>
-    <form>
-      <label>Name:</label>
-      <input type="text" id="name" placeholder="enter your name" />
-      <label>Email:</label>
-      <input type="email" id="email" placeholder="enter your email" />
-      <button type="button" onclick="addDiv()">Submit</button>
-    </form>
-    <div id="dataBox"></div>
-    <!-- <script src="form.js"></script> -->
-    <script src="./script.js"></script>
-  </body>
+    <h1>To-Do List</h1>
+    <input type="text" id="taskInput" />
+    <button id="addTaskBtn">Add Task</button>
+    <ul id="taskList"></ul>
+    <script src="script.js"></script>
+  </body>
 </html>
